@@ -38,61 +38,77 @@ public class SeleniumTest {
 
     @Test
     public void checkTitleIsCorrect() {
-        webDriver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        webDriver.get("https://www.saucedemo.com/");
         String title = webDriver.getTitle();
-        Assertions.assertEquals("OrangeHRM", title);
+        Assertions.assertEquals("SwagLabs", title);
     }
 
     @Test
     public void checkAuthenticationWorked() {
-        webDriver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        webDriver.get("https://www.saucedemo.com/");
         Actions actions = new Actions(webDriver);
 
-        WebElement usernameTextBox = webDriver.findElement(By.name("username"));
-        actions.sendKeys(usernameTextBox, "Admin");
+        WebElement usernameTextBox = webDriver.findElement(By.name("user-name"));
+        actions.sendKeys(usernameTextBox, "standard_user");
 
         WebElement passwordTextBox = webDriver.findElement(By.name("password"));
-        actions.sendKeys(passwordTextBox, "admin123").perform();
+        actions.sendKeys(passwordTextBox, "secret_sauce").perform();
 
-        WebElement loginButton = webDriver.findElement(By.className("orangehrm-login-button"));
+        WebElement loginButton = webDriver.findElement(By.name("login-button"));
         loginButton.click();
 
-        WebElement usernameText = webDriver.findElement(By.className("oxd-userdropdown-name"));
-        Assertions.assertEquals("manda user", usernameText.getText());
+        WebElement headingText = webDriver.findElement(By.className("title"));
+        Assertions.assertEquals("Products", headingText.getText());
     }
 
     /*
-        Enter invalid login data and check if the website responded properly
+        Enter invalid login data and check if the website responded properly.
      */
     @Test
-    public void checkAuthenticationFailed() {
+    public void testAuthenticationFailed() {
         // ToDo: Implement
     }
 
     /*
-        By clicking on the "My Info" button in the menu, make sure that the Driver's license number is properly displayed
-        and equal tu 56796
+        After logging in, click on the filter and select "Price (low to high)", then write your assertion based
+        on the first element that is shown
      */
     @Test
-    public void checkEmployeeIdIsDisplayedProperly() {
+    public void testOrderProductsByPrice() {
         // ToDo: Implement
     }
 
     /*
-        After logging in on the website, select the "Candidate to interview" in My Actions and click the button to see their application.
-        Then, check that the displayed e-mail address is indeed martinetennat@gmail.com
+        After logging in, add one item to the cart and make sure that the button got transformed into a "Remove" button
      */
     @Test
-    public void checkNameOfCandidateToInteviewIsDisplayed() {
+    public void testAddToCartDisplaysRemoveButton() {
         // ToDo: Implement
     }
 
     /*
-        After clicking on the "Admin" button, delete a record (click on the 'trash' icon next to a record), and check
-        that only three records left remain. Be careful, as you cannot delete the first item. Try with the other ones.
+        After logging in, add a product (or more) to the cart and go further with the checkout process by filling in
+        all the required inputs. Then, make sure that the "Thank you for your order!" page is displayed.
      */
     @Test
-    public void checkDeleteButtonInAdminPanelWorks() {
+    public void testEntireCheckoutProcess() {
+        // ToDo: Implement
+    }
+
+    /*
+        After logging in, log out and check if the user is properly redirected to the login page
+     */
+    @Test
+    public void testLogoutWorks() {
+        // ToDo: Implement
+    }
+
+    /*
+        Try logging in with a locked out user, and make sure that it doesn't work, and that the proper message is
+        displayed.
+     */
+    @Test
+    public void testLockedOutUser() {
         // ToDo: Implement
     }
 
