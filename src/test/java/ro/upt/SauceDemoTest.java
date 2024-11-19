@@ -18,7 +18,7 @@ import java.util.List;
  * that you should always use these approaches for similar test cases. Try playing with the Inspect Element tool and
  * implement the rest of the methods on your own. There are still some methods left :)
  */
-public class SeleniumTest {
+public class SauceDemoTest {
     private WebDriver webDriver;
     private Actions actions;
 
